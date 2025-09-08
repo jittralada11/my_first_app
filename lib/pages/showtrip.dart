@@ -80,7 +80,7 @@ class _ShowTripPageState extends State<ShowTripPage> {
           }
           return SafeArea(
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(2),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -126,48 +126,61 @@ class _ShowTripPageState extends State<ShowTripPage> {
                           },
                           child: const Text('เอเชียตะวันออกเฉียงใต้'),
                         ),
-                        // const SizedBox(width: 8),
-                        // FilledButton(
-                        //   onPressed: () {},
-                        //   child: const Text('อเมริกาใต้'),
-                        // ),
-                        // const SizedBox(width: 8),
-                        // FilledButton(
-                        //   onPressed: () {},
-                        //   child: const Text('ออสเตรเลีย'),
-                        // ),
-                        // const SizedBox(width: 8),
-                        // FilledButton(
-                        //   onPressed: () {},
-                        //   child: const Text('อเมริกาเหนือ'),
-                        // ),
                       ],
                     ),
                   ),
                   Expanded(
-                    child: ListView(
-                      children: getTripsRespones
-                          .map(
-                            (trip) => Card(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(trip.name),
-                                  Row(
-                                    children: [
-                                      Image.network(
-                                        trip.coverimage,
-                                        width: 180,
-                                        height: 120,
-                                        fit: BoxFit.cover,
-                                        errorBuilder:
-                                            (context, error, stackTrace) =>
-                                                SizedBox(
-                                                  width: 180,
-                                                  height: 120,
-                                                ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: ListView(
+                        children: getTripsRespones
+                            .map(
+                              (trip) => Card(
+                                elevation: 4,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  side: const BorderSide(
+                                    color: Colors.grey,
+                                    width: 1,
+                                  ),
+                                ),
+                                margin: const EdgeInsets.symmetric(vertical: 8),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Center(
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadiusGeometry.circular(
+                                                    16,
+                                                  ),
+                                              child: Image.network(
+                                                trip.coverimage,
+                                                width: 420,
+                                                height: 220,
+                                                fit: BoxFit.cover,
+                                                errorBuilder:
+                                                    (
+                                                      context,
+                                                      error,
+                                                      stackTrace,
+                                                    ) => SizedBox(
+                                                      width: 180,
+                                                      height: 120,
+                                                    ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      Column(
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
                                         crossAxisAlignment: CrossAxisAlignment
                                             .start, // จัดข้อความชิดซ้าย
                                         children: [
@@ -179,25 +192,50 @@ class _ShowTripPageState extends State<ShowTripPage> {
                                             ),
                                           ),
                                           const SizedBox(height: 4),
-                                          Text('ระยะเวลา: ${trip.duration}'),
+                                          Text(trip.name),
+                                          const SizedBox(height: 4),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                'ระยะเวลา: ',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              Text(' ${trip.duration}'),
+                                            ],
+                                          ),
                                           const SizedBox(height: 2),
-                                          Text('ราคา: ${trip.price}'),
-                                          const SizedBox(height: 12),
-                                          FilledButton(
-                                            onPressed: () => gotoTrip(trip.idx),
-                                            child: const Text(
-                                              'รายละเอียดเพิ่มเติม',
-                                            ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                'ราคา: ',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              Text('ราคา: ${trip.price}'),
+                                            ],
                                           ),
                                         ],
                                       ),
-                                    ],
-                                  ),
-                                ],
+                                    ),
+                                    const SizedBox(height: 12),
+                                    Center(
+                                      child: FilledButton(
+                                        onPressed: () => gotoTrip(trip.idx),
+                                        child: const Text(
+                                          'รายละเอียดเพิ่มเติม',
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                  ],
+                                ),
                               ),
-                            ),
-                          )
-                          .toList(),
+                            )
+                            .toList(),
+                      ),
                     ),
                   ),
                   // const SizedBox(height: 24),

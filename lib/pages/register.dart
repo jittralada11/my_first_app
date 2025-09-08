@@ -216,6 +216,7 @@ class _RegisterPageState extends State<RegisterPage> {
         headers: {"Content-Type": "application/json; charset=utf-8"},
         body: customerRegisterPostRequestToJson(req),
       );
+      
     }else {
       log('can not register because password is not correct');
     }

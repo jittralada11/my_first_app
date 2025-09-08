@@ -144,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
     log("api endpoint : $API_ENDPOINT");
     http
         .post(
-          Uri.parse("http://10.160.158.118:3100/customers/login"),
+          Uri.parse("$API_ENDPOINT/customers/login"),
           headers: {"Content-Type": "application/json; charset=utf-8"},
           body: customerLoginPostRequestToJson(req),
         )
