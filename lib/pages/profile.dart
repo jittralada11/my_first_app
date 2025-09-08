@@ -59,7 +59,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: const Text('ปิด'),
                         ),
                         FilledButton(
-                          onPressed: () {},
+                          onPressed: delete,
                           child: const Text('ยืนยัน'),
                         ),
                       ],
@@ -211,5 +211,14 @@ class _ProfilePageState extends State<ProfilePage> {
     var res = await http.get(Uri.parse('$url/customers/${widget.idx}'));
     log(res.body);
     customerIdxGetResponse = getCustomerResponesFromJson(res.body);
+  }
+
+  void delete() async {
+    var config = await Configuration.getConfig();
+    var url = config['apiEndpoint'];
+
+    var res = await http.delete(Uri.parse('$url/customers/${widget.idx}'));
+    log(res.statusCode.toString());
+    Navigator.of(context).popUntil((route) => route.isFirst);
   }
 }
