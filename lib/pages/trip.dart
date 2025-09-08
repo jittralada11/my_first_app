@@ -44,27 +44,45 @@ class _TripPageState extends State<TripPage> {
                   children: [
                     Text(
                       tripIdxGetResponse.name,
-                      style: TextStyle(fontSize: 30),
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                    const SizedBox(height: 4),
                     Text(
                       tripIdxGetResponse.country,
                       style: TextStyle(fontSize: 20),
                     ),
-                    Image.network(
-                      tripIdxGetResponse.coverimage,
-                      width: 400,
-                      height: 220,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) =>
-                          SizedBox(width: 180, height: 120),
+                    const SizedBox(height: 12),
+                    Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadiusGeometry.circular(16),
+                        child: Image.network(
+                          tripIdxGetResponse.coverimage,
+                          width: 400,
+                          height: 220,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) =>
+                              SizedBox(width: 180, height: 120),
+                        ),
+                      ),
                     ),
+                    const SizedBox(height: 12),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('${tripIdxGetResponse.price} บาท'),
-                        Text(tripIdxGetResponse.destinationZone),
+                        Text(
+                          '${tripIdxGetResponse.price} บาท',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        Text(
+                          tripIdxGetResponse.destinationZone,
+                          style: TextStyle(fontSize: 18),
+                        ),
                       ],
                     ),
+                    const SizedBox(height: 16),
                     Text(tripIdxGetResponse.detail),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

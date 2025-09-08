@@ -110,9 +110,6 @@ class _ProfilePageState extends State<ProfilePage> {
                       Text('ชื่อ-นามสกุล', style: TextStyle(fontSize: 20)),
                       TextFormField(
                         initialValue: customerIdxGetResponse.fullname,
-                        // controller: TextEditingController(
-                        //   text: customerIdxGetResponse.fullname,
-                        // ),
                         style: TextStyle(fontSize: 20),
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
@@ -121,15 +118,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           customerIdxGetResponse.fullname = value;
                         },
                       ),
-                      // Text(
-                      //   customerIdxGetResponse.fullname,
-                      //   style: TextStyle(fontSize: 20),
-                      // ),
                       Text('หมายเลขโทรศัพท์', style: TextStyle(fontSize: 20)),
                       TextFormField(
-                        // controller: TextEditingController(
-                        //   text: customerIdxGetResponse.phone,
-                        // ),
                         initialValue: customerIdxGetResponse.phone,
                         style: TextStyle(fontSize: 20),
                         decoration: InputDecoration(
@@ -139,15 +129,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           customerIdxGetResponse.phone = value;
                         },
                       ),
-                      // Text(
-                      //   customerIdxGetResponse.phone,
-                      //   style: TextStyle(fontSize: 20),
-                      // ),
                       Text('Email', style: TextStyle(fontSize: 20)),
                       TextFormField(
-                        // controller: TextEditingController(
-                        //   text: customerIdxGetResponse.email,
-                        // ),
                         initialValue: customerIdxGetResponse.email,
                         style: TextStyle(fontSize: 20),
                         decoration: InputDecoration(
@@ -160,9 +143,6 @@ class _ProfilePageState extends State<ProfilePage> {
                       Text('รูปโปรไฟล์', style: TextStyle(fontSize: 20)),
                       TextFormField(
                         initialValue: customerIdxGetResponse.image,
-                        // controller: TextEditingController(
-                        //   text: customerIdxGetResponse.image,
-                        // ),
                         style: TextStyle(fontSize: 20),
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
